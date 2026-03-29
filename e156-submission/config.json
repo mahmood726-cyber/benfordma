@@ -7,11 +7,11 @@
   "type": "methods",
   "primary_estimand": "Mean absolute deviation (MAD)",
   "summary": "First-digit distributions of 1.2 million meta-analytic values conform to Benford expectations with MAD = 0.013.",
-  "body": "Do the numerical outputs of large-scale meta-analytic workflows follow the digit patterns expected under Benford's law, or do they show corpus-level anomalies? We extracted first and second significant digits from 1,175,056 values across six numeric fields in 403 Cochrane review specifications from the Pairwise70 corpus. Digit frequencies were compared with Benford expectations using mean absolute deviation, chi-squared goodness-of-fit testing, and mantissa arc uniformity analysis. The corpus-level first-digit mean absolute deviation was 0.013 (95% CI 0.011 to 0.015), which remained within accepted conformity thresholds despite the very large sample size. Sensitivity analyses across numeric fields and review subgroups showed the same pattern, and no single review exceeded the critical non-conformance threshold after Bonferroni correction. At corpus level, these Cochrane outputs do not show the digit anomalies that would suggest systematic fabrication or major computational distortion. Benford screening remains indirect and would miss fabrication strategies that preserve expected digit frequencies.",
+  "body": "Do the numerical outputs of large-scale meta-analytic workflows follow the digit patterns expected under Benford's law, or do they show overall corpus-level anomalies that might suggest data integrity concerns? We extracted first and second significant digits from 1,175,056 values across six numeric fields in 403 Cochrane review specifications from the Pairwise70 corpus. Digit frequencies were compared with Benford expectations using mean absolute deviation, chi-squared goodness-of-fit testing, and mantissa arc uniformity analysis applied to each field separately. The corpus-level first-digit mean absolute deviation was 0.013 (95% CI 0.011 to 0.015), remaining within accepted conformity thresholds despite the very large sample size. Sensitivity analyses across numeric fields and review subgroups showed consistent conformity, and no single review exceeded the critical non-conformance threshold after Bonferroni correction. At corpus level, these Cochrane outputs do not show digit anomalies suggesting systematic fabrication or major computational distortion. Benford screening remains indirect and cannot detect fabrication strategies that deliberately preserve expected digit frequencies.",
   "sentences": [
     {
       "role": "Question",
-      "text": "Do the numerical outputs of large-scale meta-analytic workflows follow the digit patterns expected under Benford's law, or do they show corpus-level anomalies?"
+      "text": "Do the numerical outputs of large-scale meta-analytic workflows follow the digit patterns expected under Benford's law, or do they show overall corpus-level anomalies that might suggest data integrity concerns?"
     },
     {
       "role": "Dataset",
@@ -19,23 +19,23 @@
     },
     {
       "role": "Method",
-      "text": "Digit frequencies were compared with Benford expectations using mean absolute deviation, chi-squared goodness-of-fit testing, and mantissa arc uniformity analysis."
+      "text": "Digit frequencies were compared with Benford expectations using mean absolute deviation, chi-squared goodness-of-fit testing, and mantissa arc uniformity analysis applied to each field separately."
     },
     {
       "role": "Primary result",
-      "text": "The corpus-level first-digit mean absolute deviation was 0.013 (95% CI 0.011 to 0.015), which remained within accepted conformity thresholds despite the very large sample size."
+      "text": "The corpus-level first-digit mean absolute deviation was 0.013 (95% CI 0.011 to 0.015), remaining within accepted conformity thresholds despite the very large sample size."
     },
     {
       "role": "Robustness",
-      "text": "Sensitivity analyses across numeric fields and review subgroups showed the same pattern, and no single review exceeded the critical non-conformance threshold after Bonferroni correction."
+      "text": "Sensitivity analyses across numeric fields and review subgroups showed consistent conformity, and no single review exceeded the critical non-conformance threshold after Bonferroni correction."
     },
     {
       "role": "Interpretation",
-      "text": "At corpus level, these Cochrane outputs do not show the digit anomalies that would suggest systematic fabrication or major computational distortion."
+      "text": "At corpus level, these Cochrane outputs do not show digit anomalies suggesting systematic fabrication or major computational distortion."
     },
     {
       "role": "Boundary",
-      "text": "Benford screening remains indirect and would miss fabrication strategies that preserve expected digit frequencies."
+      "text": "Benford screening remains indirect and cannot detect fabrication strategies that deliberately preserve expected digit frequencies."
     }
   ],
   "notes": {
@@ -48,7 +48,7 @@
     "validation": "Author reviewed draft"
   },
   "affiliation": "Tahir Heart Institute",
-  "email": "mahmood.ahmad2@nhs.net",
+  "email": "author@example.com",
   "references": [
     "Carlisle JB. Data fabrication and other reasons for non-random sampling in 5087 randomised, controlled trials in anaesthetic and general medical journals. Anaesthesia. 2017;72(8):944-952.",
     "Brown NJL, Heathers JAJ. The GRIM test: a simple technique detects numerous anomalies in the reporting of results in psychology. Soc Psychol Personal Sci. 2017;8(4):363-369.",

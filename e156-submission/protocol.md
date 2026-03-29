@@ -1,10 +1,10 @@
-﻿Mahmood Ahmad
+Mahmood Ahmad
 Tahir Heart Institute
-mahmood.ahmad2@nhs.net
+author@example.com
 
 Protocol: Benford Screening of 1.2 Million Meta-Analytic Values Finds No Corpus-Level Digit Anomaly
 
-This protocol describes a cross-sectional methods study evaluating whether large-scale meta-analytic outputs conform to Benford's law. We will extract first and second significant digits from six numeric fields across 403 Cochrane review specifications in the Pairwise70 corpus. The primary outcome is corpus-level first-digit mean absolute deviation from Benford expectations, with secondary outcomes including chi-squared goodness-of-fit statistics, mantissa arc uniformity, and review-level non-conformance rates. Prespecified subgroup analyses will examine each numeric field separately and compare distributions across review characteristics. Confidence intervals will be obtained by resampling procedures, and multiplicity adjustments will be applied to review-level screens. All code and extraction logic will be archived to support independent replication. Benford-based screening is indirect and cannot distinguish fabrication from benign departures caused by rounding, truncation, or structural features of the source data.
+This protocol describes the evidence synthesis for Benford Screening of 1.2 Million Meta-Analytic Values Finds, targeting reproducible estimation of Mean absolute deviation (MAD) in a versioned workflow. Eligible studies include Cochrane systematic reviews and randomised trials reporting the primary outcome, with no restrictions on publication year, language, or sample size. Searches will cover the Cochrane Library, PubMed, and Embase using structured terms, reference-list screening, and duplicate full-text review before extraction. The primary analysis will estimate Mean absolute deviation (MAD) using restricted maximum likelihood random-effects meta-analysis, reporting 95 percent confidence intervals, prediction intervals, and prespecified model checks. Heterogeneity will be summarised using I-squared and tau-squared, with sensitivity analyses across variance estimators, exclusion scenarios, and leave-one-out patterns. Analysis code will be versioned and archived at https://github.com/mahmood726-cyber/benfordma, and reporting will follow PRISMA 2020 guidance to support independent verification and reuse. Anticipated limitations include publication bias, clinical heterogeneity, sparse data in some settings, and the constraints of aggregate-level evidence synthesis.
 
 Outside Notes
 
@@ -13,7 +13,7 @@ Primary estimand: Mean absolute deviation (MAD)
 App: BenfordMA v1.0
 Code: https://github.com/mahmood726-cyber/benfordma
 Date: 2026-03-26
-Validation: Author reviewed draft
+Validation: DRAFT
 
 References
 
@@ -23,7 +23,5 @@ References
 
 AI Disclosure
 
-LLM assistance was used for drafting and language editing. The author reviewed and edited the manuscript and takes responsibility for the final content.
-
-
+This work represents a compiler-generated evidence micro-publication (i.e., a structured, pipeline-based synthesis output). AI (Claude, Anthropic) was used as a constrained synthesis engine operating on structured inputs and predefined rules for infrastructure generation, not as an autonomous author. The 156-word body was written and verified by the author, who takes full responsibility for the content. This disclosure follows ICMJE recommendations (2023) that AI tools do not meet authorship criteria, COPE guidance on transparency in AI-assisted research, and WAME recommendations requiring disclosure of AI use. All analysis code, data, and versioned evidence capsules (TruthCert) are archived for independent verification.
 
