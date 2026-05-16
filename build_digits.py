@@ -14,6 +14,9 @@ import json
 import math
 from pathlib import Path
 
+PROJECT_ROOT = Path(__file__).resolve().parent
+DEFAULT_PROJECTS_ROOT = PROJECT_ROOT.parent
+
 
 def first_digit(x):
     """Return first significant digit (1-9) of abs(x), or None."""
@@ -177,13 +180,26 @@ def extract_study_digits(json_path):
     return study_digits
 
 
-def main():
+def resolve_paths(project_root=None, projects_root=None):
+    project_root = Path(project_root).resolve() if project_root else PROJECT_ROOT
+    projects_root = Path(projects_root).resolve() if projects_root else project_root.parent
+    return {
+        'fragility_results': projects_root / 'FragilityAtlas' / 'data' / 'output' / 'fragility_atlas_results.csv',
+        'prediction_results': projects_root / 'PredictionGap' / 'data' / 'output' / 'prediction_gap_results.csv',
+        'fragility_specs': projects_root / 'FragilityAtlas' / 'data' / 'output' / 'fragility_atlas_specifications.csv',
+        'validation_inputs': projects_root / 'FragilityAtlas' / 'data' / 'output' / 'r_validation_inputs.json',
+        'output': project_root / 'data' / 'corpus_digits.json',
+    }
+
+
+def main(project_root=None, projects_root=None):
     print("Building BenfordMA digit corpus...\n")
+    paths = resolve_paths(project_root=project_root, projects_root=projects_root)
 
     # Review-level digits (primary)
     print("1. Review-level data:")
-    fa = load_csv(r'C:\FragilityAtlas\data\output\fragility_atlas_results.csv')
-    pg = load_csv(r'C:\PredictionGap\data\output\prediction_gap_results.csv')
+    fa = load_csv(paths['fragility_results'])
+    pg = load_csv(paths['prediction_results'])
     reviews = extract_review_digits(fa, pg)
 
     total_digits = sum(len(r['digits']) for r in reviews)
@@ -191,16 +207,12 @@ def main():
 
     # Specification-level sensitivity (secondary)
     print("2. Specification-level sensitivity analysis:")
-    spec_summary = extract_spec_digits(
-        r'C:\FragilityAtlas\data\output\fragility_atlas_specifications.csv'
-    )
+    spec_summary = extract_spec_digits(paths['fragility_specs'])
     print(f"  -> {spec_summary['n_values']} specification-level digit observations\n")
 
     # Per-study ground truth (tertiary)
     print("3. Per-study ground truth:")
-    study_digits = extract_study_digits(
-        r'C:\FragilityAtlas\data\output\r_validation_inputs.json'
-    )
+    study_digits = extract_study_digits(paths['validation_inputs'])
 
     # Build output
     output = {
@@ -216,7 +228,7 @@ def main():
         }
     }
 
-    out_path = Path(r'C:\BenfordMA\data\corpus_digits.json')
+    out_path = paths['output']
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(output, f)
@@ -230,6 +242,7 @@ def main():
     print(f"  Per-study digits: {len(study_digits) if study_digits else 0}")
     print(f"  Output: {out_path}")
     print(f"  Size: {out_path.stat().st_size / 1024:.0f} KB")
+    return out_path
 
 
 if __name__ == '__main__':
