@@ -301,7 +301,7 @@ textarea.csv-input {
       <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:.75rem;">
         Paste CSV with columns: <code>Study, Effect, SE, N, Pvalue</code> (header required). Tab or comma separated.
       </p>
-      <textarea class="csv-input" id="customCSV" placeholder="Study,Effect,SE,N,Pvalue&#10;Smith 2020,0.45,0.12,128,0.042&#10;Jones 2019,-0.23,0.18,64,0.312"></textarea>
+      <textarea class="csv-input" id="customCSV" placeholder="Study,Effect,SE,N,Pvalue&#10;Smith 2020,0.45,0.12,128,0.042&#10;Jones 2019,-0.23,0.18,64,0.312" aria-label="Custom Analysis &amp;mdash; Paste Study Data"></textarea>
       <div style="margin-top:.5rem;">
         <button class="btn btn-primary" onclick="importCustomCSV()">Import &amp; Analyse</button>
         <button class="btn" onclick="resetToCorpus()" style="margin-left:.5rem;">Back to Corpus</button>
@@ -384,8 +384,8 @@ textarea.csv-input {
     <div style="margin-bottom:.75rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;">
       <input type="text" id="tableSearch" placeholder="Search review ID or name..."
         style="padding:.35rem .65rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:.85rem;width:240px;"
-        oninput="filterTable()">
-      <select id="tableFilter" style="padding:.35rem .65rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:.85rem;" onchange="filterTable()">
+        oninput="filterTable()" aria-label="Table Search">
+      <select id="tableFilter" style="padding:.35rem .65rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:.85rem;" onchange="filterTable()" aria-label="Table Filter">
         <option value="">All classifications</option>
         <option value="Conforming">Conforming</option>
         <option value="Minor Deviation">Minor Deviation</option>
