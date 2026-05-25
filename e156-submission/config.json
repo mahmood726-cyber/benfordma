@@ -3,7 +3,7 @@
   "slug": "benford-ma",
   "author": "Mahmood Ahmad",
   "date": "2026-03-26",
-  "path": "C:\\BenfordMA",
+  "path": "..",
   "type": "methods",
   "primary_estimand": "Mean absolute deviation (MAD)",
   "summary": "First-digit distributions of 1.2 million meta-analytic values conform to Benford expectations with MAD = 0.013.",
