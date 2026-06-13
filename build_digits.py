@@ -85,9 +85,15 @@ def extract_review_digits(fa_rows, pg_rows):
         pg = pg_map.get(rid, {})
 
         digits = []
+        # Prefer PredictionGap theta; fall back to FragilityAtlas median only
+        # when theta is missing. Use an explicit None check, not `or`, so a
+        # legitimate theta of exactly 0.0 is not silently replaced by the
+        # median (a falsy 0.0 would otherwise trigger the fallback).
+        theta = safe_float(pg.get('theta'))
+        effect = theta if theta is not None else safe_float(fa.get('median_theta'))
         # Fields to extract from both sources
         fields = {
-            'effect': safe_float(pg.get('theta')) or safe_float(fa.get('median_theta')),
+            'effect': effect,
             'se': safe_float(fa.get('iqr_theta')),  # proxy for SE spread
             'k': safe_float(fa.get('k')),
             'pvalue': safe_float(pg.get('p_value')),
