@@ -23,7 +23,7 @@ python -m http.server 8000
 python -m pytest -q
 ```
 
-The suite under `tests/` includes 2 test file(s).
+The suite under `tests/` includes 3 test file(s).
 
 ## Repo layout
 

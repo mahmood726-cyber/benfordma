@@ -690,7 +690,11 @@ function secondDigit(x) {
 
 function mantissaVal(x) {
   if (x === null || !isFinite(x) || x === 0) return null;
-  return Math.log10(Math.abs(x)) % 1;
+  // Normalize to [0,1): JS `%` keeps the dividend's sign, so |x|<1 yields a
+  // negative fractional part. Python's `% 1` (build_digits.mantissa) is always
+  // non-negative; match it so custom-mode agrees with the shipped corpus.
+  var m = Math.log10(Math.abs(x)) % 1;
+  return m < 0 ? m + 1 : m;
 }
 
 /* ===== COMPUTE CORPUS STATS ===== */
@@ -958,7 +962,7 @@ function renderMantissa(stats) {
   var nBins      = 36;
   var binCounts  = new Array(nBins).fill(0);
   for (var i = 0; i < mantissas.length; i++) {
-    var bin = Math.min(nBins - 1, Math.floor(mantissas[i] * nBins));
+    var bin = Math.max(0, Math.min(nBins - 1, Math.floor(mantissas[i] * nBins)));
     binCounts[bin]++;
   }
 

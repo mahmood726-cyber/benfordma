@@ -115,10 +115,11 @@ def extract_review_digits(fa_rows, pg_rows):
                         'mantissa': round(m, 6) if m is not None else None,
                     })
 
+        kval = safe_float(fa.get('k'))
         reviews.append({
             'review_id': rid,
             'analysis_name': fa.get('analysis_name', ''),
-            'k': int(float(fa.get('k', 0))),
+            'k': int(kval) if kval is not None else 0,
             'digits': digits,
         })
 
